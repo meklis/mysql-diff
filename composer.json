@@ -1,0 +1,21 @@
+{
+    "name": "meklis/mysql-diff",
+    "description": "Compare two mysql databases. Check indexes, tables, views, fk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "meklis",
+            "email": "max.boyar.a@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-mysqli": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Meklis\\DbDiff\\": "src"
+        }
+    }
+}
