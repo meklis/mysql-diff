@@ -161,6 +161,10 @@ class SchemaDiff {
         $dest = $this->dest->getIndexes();
         $result = [];
         foreach ($src as $key=>$def) {
+            if(!isset($def['table_name'])) {
+                $this->writeLog("DEBUG", "Index $key not have table in src store");
+                continue;
+            }
             if(isset($dest[$key]) && $dest[$key] === $def) {
                 $this->writeLog("DEBUG", "Index $key is defined and not changed");
             } elseif (isset($dest[$key])) {
@@ -194,6 +198,9 @@ class SchemaDiff {
             }
         }
         foreach ($dest as $key=>$def) {
+            if(!isset($def['table_name'])) {
+                throw new \Exception("TABLE NOT FOUND IN DEST");
+            }
             if(!isset($src[$key])) {
                 $result[] = [
                     'action' => 'drop_index',
